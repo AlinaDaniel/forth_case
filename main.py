@@ -9,6 +9,7 @@
 
 
 from textblob import TextBlob
+from langdetect import detect
 
 
 # Choosing the language.
@@ -31,7 +32,7 @@ while True:
 
 text = input('Введите текст: ')
 
-from textblob import TextBlob
+
 
 blob = TextBlob(text)
 count_sentens = len(blob.sentences)
@@ -49,7 +50,11 @@ ASL = count_sentens / count_words
 ASL = ("{:.3f}".format(ASL))
 ASW = count_words / count_syllables
 ASW = ("{:.3f}".format(ASW))
-FRE = 206.835 - (1.3 * ASL) - (60.1 * ASW)
+if detect(text) == 'ru':
+    FRE = 206.835 - (1.3 * ASL) - (60.1 * ASW)
+elif detect(text) == 'en':
+    FRE = 206.835 - (1.015 * ASL) - (84.6 * ASW)
+
 
 print('Предложений:', count_sentens)
 print('Слов:', count_words)
