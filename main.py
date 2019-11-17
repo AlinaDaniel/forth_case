@@ -9,7 +9,7 @@
 
 
 from textblob import TextBlob
-from langdetect import detect
+
 
 
 # Choosing the language.
@@ -32,6 +32,18 @@ while True:
 
 text = input('Введите текст: ')
 
+count_rus = 0
+count_eng = 0
+text_language = ''
+for i in text:
+    if i.lower() in 'яюэьыъщшчцхфутсрпонмлкйизжёедгвба':
+        count_rus += 1
+    elif i.lower() in 'abcdefghijklmnopqrstuvwxyz':
+        count_eng += 1
+if count_rus > count_eng:
+    text_language = 'русский'
+else:
+    text_language = 'english'
 
 
 blob = TextBlob(text)
@@ -49,11 +61,15 @@ for letter in text:
 ASL = count_sentens / count_words
 ASL = ("{:.3f}".format(ASL))
 ASW = count_words / count_syllables
+
 ASW = ("{:.3f}".format(ASW))
-if detect(text) == 'ru':
-    FRE = 206.835 - (1.3 * ASL) - (60.1 * ASW)
-elif detect(text) == 'en':
-    FRE = 206.835 - (1.015 * ASL) - (84.6 * ASW)
+
+if language == 'русский':
+    FRE = 206.835 - (1.3 * float(ASL)) - (60.1 * float(ASW))
+elif language == 'english':
+    FRE = 206.835 - (1.015 * float(ASL)) - (84.6 * float(ASW))
+
+
 
 
 print('Предложений:', count_sentens)
