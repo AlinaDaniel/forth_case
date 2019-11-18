@@ -4,7 +4,7 @@
 # The program determines the tonality of the text and how much the statements in the text are objective
 # or subjective (in percent).
 
-# Developers:   Zemtseva A. (%),
+# Developers:   Zemtseva A. (45%),
 #               Zaitseva A. (40%),
 #               Daniel A.   (%).
 
