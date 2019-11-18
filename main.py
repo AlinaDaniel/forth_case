@@ -71,10 +71,8 @@ count_words = len(text)
 print(lc.TXT_WORDS, count_words)
 
 
-ASL = count_sentens / count_words
-ASL = ("{:.3f}".format(ASL))
-ASW = count_words / count_syllables
-ASW = ("{:.3f}".format(ASW))
+ASL = count_words / count_sentens
+ASW = count_syllables / count_words
 
 # Flash index calculation.
 if text_language == lc.TXT_RUSSIAN_LANGUAGE:
@@ -84,9 +82,9 @@ elif text_language == lc.TXT_ENGLISN_LANGUAGE:
     FRE = 206.835 - (1.015 * float(ASL)) - (84.6 * float(ASW))
     letter = 'aoieuy'
 
-print(lc.TXT_AVERAGE_LENGTH_OF_SENTENCE, ASL)
-print(lc.TXT_AVERAGE_LENGTH_OF_WORD, ASW)
-print(lc.TXT_FLESCH_INDEX, FRE)
+print(lc.TXT_AVERAGE_LENGTH_OF_SENTENCE, "{:.2f}".format(ASL))
+print(lc.TXT_AVERAGE_LENGTH_OF_WORD, "{:.2f}".format(ASW))
+print(lc.TXT_FLESCH_INDEX, "{:.2f}".format(FRE))
 
 if FRE > 80:
     print(lc.TXT_VERY_EASY_FOR_READING)
