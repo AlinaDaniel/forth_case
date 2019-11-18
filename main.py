@@ -88,8 +88,8 @@ elif 25 < FRE < 50:
 elif FRE <= 25:
     print('Текст трудно читается (для выпускников ВУЗов).')
 
-text = TextBlob(text)
-polarity = text.polarity
+
+polarity = blob.polarity
 
 if 0.3 < polarity <= 1:
     polarity = 'позитивный'
@@ -98,7 +98,7 @@ elif -1 <= polarity < -0.3:
 else:
     polarity = 'нейтральный'
 
-subjectivity = text.subjectivity * 100
+subjectivity = blob.subjectivity * 100
 objectivity = (100 - subjectivity)
 
 print('Тональность текста:', polarity)
