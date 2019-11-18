@@ -45,20 +45,29 @@ if count_rus > count_eng:
 else:
     text_language = 'english'
 
+letter = ''
 
 blob = TextBlob(text)
 count_sentens = len(blob.sentences)
 print('Предложений:', count_sentens)
 
+
+if text_language == 'русский':
+    letter = 'аоиеёэыуюя'
+elif text_language == 'english':
+    letter = 'aoieuy'
+
+
+count_syllables = 0
+for i in range(len(text)):
+    if text[i] in letter:
+        count_syllables += 1
+print('Слогов:', count_syllables)
+
 text = text.split()
 count_words = len(text)
 print('Слов:', count_words)
 
-for letter in text:
-    count_syllables = 0
-    if letter.lower() in 'аоиеёэыуюя':
-        count_syllables += 1
-print('Слогов:', count_syllables)
 
 ASL = count_sentens / count_words
 ASL = ("{:.3f}".format(ASL))
@@ -67,8 +76,10 @@ ASW = ("{:.3f}".format(ASW))
 
 if text_language == 'русский':
     FRE = 206.835 - (1.3 * float(ASL)) - (60.1 * float(ASW))
+    letter = 'аоиеёэыуюя'
 elif text_language == 'english':
     FRE = 206.835 - (1.015 * float(ASL)) - (84.6 * float(ASW))
+    letter = 'aoieuy'
 
 print('Средняя длина предложения в словах:', ASL)
 print('Средняя длина слова в слогах:', ASW)
