@@ -48,20 +48,21 @@ else:
 
 blob = TextBlob(text)
 count_sentens = len(blob.sentences)
+print('Предложений:', count_sentens)
 
 text = text.split()
 count_words = len(text)
-print(count_words)
+print('Слов:', count_words)
 
-count_syllables = 0
 for letter in text:
+    count_syllables = 0
     if letter.lower() in 'аоиеёэыуюя':
         count_syllables += 1
+print('Слогов:', count_syllables)
 
 ASL = count_sentens / count_words
 ASL = ("{:.3f}".format(ASL))
 ASW = count_words / count_syllables
-
 ASW = ("{:.3f}".format(ASW))
 
 if text_language == 'русский':
@@ -69,12 +70,6 @@ if text_language == 'русский':
 elif text_language == 'english':
     FRE = 206.835 - (1.015 * float(ASL)) - (84.6 * float(ASW))
 
-
-
-
-print('Предложений:', count_sentens)
-print('Слов:', count_words)
-print('Слогов:', count_syllables)
 print('Средняя длина предложения в словах:', ASL)
 print('Средняя длина слова в слогах:', ASW)
 print('Индекс удобочитаемости Флеша:', FRE)
