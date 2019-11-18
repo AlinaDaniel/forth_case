@@ -5,7 +5,7 @@
 # or subjective (in percent).
 
 # Developers:   Zemtseva A. (%),
-#               Zaitseva A. (%),
+#               Zaitseva A. (40%),
 #               Daniel A.   (%).
 
 
