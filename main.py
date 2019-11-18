@@ -1,7 +1,9 @@
 # Case #4
 
-# The program ...
-#
+# The program calculates the Flash index and displays a textual interpretation of the calculated index.
+# The program determines the tonality of the text and how much the statements in the text are objective
+# or subjective (in percent).
+
 
 # Developers:   Zemtseva A. (%),
 #               Zaitseva A. (%),
@@ -9,7 +11,6 @@
 
 
 from textblob import TextBlob
-
 
 
 # Choosing the language.
@@ -26,7 +27,7 @@ while True:
         import rus_local as lc
 
         break
-    print('Choose language/ Выберите язык./n1) Englishs/ Английский язык;\n2) '
+    print('Choose language/ Выберите язык./n1) English/ Английский язык;\n2) '
           'Russian/ Русский язык.')
     language = input('Input number/ Введите цифру: ')
 
@@ -45,18 +46,17 @@ if count_rus > count_eng:
 else:
     text_language = 'english'
 
-letter = ''
 
+# Counter of sentences, syllables and words.
 blob = TextBlob(text)
 count_sentens = len(blob.sentences)
 print('Предложений:', count_sentens)
 
-
+letter = ''
 if text_language == 'русский':
     letter = 'аоиеёэыуюя'
 elif text_language == 'english':
     letter = 'aoieuy'
-
 
 count_syllables = 0
 for i in range(len(text)):
@@ -74,6 +74,7 @@ ASL = ("{:.3f}".format(ASL))
 ASW = count_words / count_syllables
 ASW = ("{:.3f}".format(ASW))
 
+# Flash index calculation.
 if text_language == 'русский':
     FRE = 206.835 - (1.3 * float(ASL)) - (60.1 * float(ASW))
     letter = 'аоиеёэыуюя'
@@ -94,7 +95,7 @@ elif 25 < FRE < 50:
 elif FRE <= 25:
     print('Текст трудно читается (для выпускников ВУЗов).')
 
-
+# Definition of tonality of the text.
 polarity = blob.polarity
 
 if 0.3 < polarity <= 1:
@@ -104,6 +105,7 @@ elif -1 <= polarity < -0.3:
 else:
     polarity = 'нейтральный'
 
+# Determination of the objectivity / subjectivity of statements in the text.
 subjectivity = blob.subjectivity * 100
 objectivity = (100 - subjectivity)
 
