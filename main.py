@@ -4,7 +4,6 @@
 # The program determines the tonality of the text and how much the statements in the text are objective
 # or subjective (in percent).
 
-
 # Developers:   Zemtseva A. (%),
 #               Zaitseva A. (%),
 #               Daniel A.   (%).
@@ -48,7 +47,6 @@ if count_rus > count_eng:
 else:
     text_language = lc.TXT_ENGLISN_LANGUAGE
 
-
 # Counter of sentences, syllables and words.
 blob = TextBlob(text)
 count_sentens = len(blob.sentences)
@@ -70,16 +68,15 @@ text = text.split()
 count_words = len(text)
 print(lc.TXT_WORDS, count_words)
 
-
 ASL = count_words / count_sentens
 ASW = count_syllables / count_words
 
 # Flash index calculation.
 if text_language == lc.TXT_RUSSIAN_LANGUAGE:
-    FRE = 206.835 - (1.3 * float(ASL)) - (60.1 * float(ASW))
+    FRE = 206.835 - (1.3 * ASL) - (60.1 * ASW)
     letter = 'аоиеёэыуюя'
 elif text_language == lc.TXT_ENGLISN_LANGUAGE:
-    FRE = 206.835 - (1.015 * float(ASL)) - (84.6 * float(ASW))
+    FRE = 206.835 - (1.015 * ASL) - (84.6 * ASW)
     letter = 'aoieuy'
 
 print(lc.TXT_AVERAGE_LENGTH_OF_SENTENCE, "{:.2f}".format(ASL))
