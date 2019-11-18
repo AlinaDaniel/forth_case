@@ -64,9 +64,9 @@ ASW = count_words / count_syllables
 
 ASW = ("{:.3f}".format(ASW))
 
-if language == 'русский':
+if text_language == 'русский':
     FRE = 206.835 - (1.3 * float(ASL)) - (60.1 * float(ASW))
-elif language == 'english':
+elif text_language == 'english':
     FRE = 206.835 - (1.015 * float(ASL)) - (84.6 * float(ASW))
 
 
