@@ -1,6 +1,6 @@
 # Case #4
 
-# The program calculates the Flash index and displays a textual interpretation of the calculated index.
+# The program calculates the Flesch index and displays a textual interpretation of the calculated index.
 # The program determines the tonality of the text and how much the statements in the text are objective
 # or subjective (in percent).
 
@@ -31,8 +31,10 @@ while True:
           'Russian/ Русский язык.')
     language = input('Input number/ Введите цифру: ')
 
-text = input('Введите текст: ')
 
+text = input(lc.TXT_INPUT_TEXT)
+
+# Determining the language of the text.
 count_rus = 0
 count_eng = 0
 text_language = ''
@@ -42,15 +44,15 @@ for i in text:
     elif i.lower() in 'abcdefghijklmnopqrstuvwxyz':
         count_eng += 1
 if count_rus > count_eng:
-    text_language = 'русский'
+    text_language = lc.TXT_RUSSIAN_LANGUAGE
 else:
-    text_language = 'english'
+    text_language = lc.TXT_ENGLISN_LANGUAGE
 
 
 # Counter of sentences, syllables and words.
 blob = TextBlob(text)
 count_sentens = len(blob.sentences)
-print('Предложений:', count_sentens)
+print(lc.TXT_SENTENCES, count_sentens)
 
 letter = ''
 if text_language == 'русский':
@@ -62,11 +64,11 @@ count_syllables = 0
 for i in range(len(text)):
     if text[i] in letter:
         count_syllables += 1
-print('Слогов:', count_syllables)
+print(lc.TXT_SYLLABLES, count_syllables)
 
 text = text.split()
 count_words = len(text)
-print('Слов:', count_words)
+print(lc.TXT_WORDS, count_words)
 
 
 ASL = count_sentens / count_words
@@ -75,40 +77,44 @@ ASW = count_words / count_syllables
 ASW = ("{:.3f}".format(ASW))
 
 # Flash index calculation.
-if text_language == 'русский':
+if text_language == lc.TXT_RUSSIAN_LANGUAGE:
     FRE = 206.835 - (1.3 * float(ASL)) - (60.1 * float(ASW))
     letter = 'аоиеёэыуюя'
-elif text_language == 'english':
+elif text_language == lc.TXT_ENGLISN_LANGUAGE:
     FRE = 206.835 - (1.015 * float(ASL)) - (84.6 * float(ASW))
     letter = 'aoieuy'
 
-print('Средняя длина предложения в словах:', ASL)
-print('Средняя длина слова в слогах:', ASW)
-print('Индекс удобочитаемости Флеша:', FRE)
+print(lc.TXT_AVERAGE_LENGTH_OF_SENTENCE, ASL)
+print(lc.TXT_AVERAGE_LENGTH_OF_WORD, ASW)
+print(lc.TXT_FLESCH_INDEX, FRE)
 
 if FRE > 80:
-    print('Текст очень легко читается (для младших школьников).')
+    print(lc.TXT_VERY_EASY_FOR_READING)
 elif 50 <= FRE <= 80:
-    print('Простой текст (для школьников).')
+    print(lc.TXT_EASY_FOR_READING)
 elif 25 < FRE < 50:
-    print('Текст немного трудно читать (для студентов).')
+    print(lc.TXT_A_BIT_HARD_FOR_READING)
 elif FRE <= 25:
-    print('Текст трудно читается (для выпускников ВУЗов).')
+    print(lc.TXT_HARD_FOR_READING)
+
+# Translating of text from Russian into English.
+if text_language == lc.TXT_RUSSIAN_LANGUAGE:
+    blob = blob.translate(to='en')
 
 # Definition of tonality of the text.
 polarity = blob.polarity
 
 if 0.3 < polarity <= 1:
-    polarity = 'позитивный'
+    polarity = lc.TXT_POSITIVE
 elif -1 <= polarity < -0.3:
-    polarity = 'негативный'
+    polarity = lc.TXT_NEGATIVE
 else:
-    polarity = 'нейтральный'
+    polarity = lc.TXT_NEUTRAL
 
 # Determination of the objectivity / subjectivity of statements in the text.
 subjectivity = blob.subjectivity * 100
 objectivity = (100 - subjectivity)
 
-print('Тональность текста:', polarity)
-print('Cубъективность: ', '{:.1f}'.format(subjectivity), '%', sep='')
-print('Oбъективность: ', '{:.1f}'.format(objectivity), '%', sep='')
+print(lc.TXT_POLARITY, polarity)
+print(lc.TXT_SUBJECTIVITY, '{:.1f}'.format(subjectivity), '%', sep='')
+print(lc.TXT_OBJECTIVITY, '{:.1f}'.format(objectivity), '%', sep='')

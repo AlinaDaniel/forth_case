@@ -1,0 +1,22 @@
+# Localization for Russian language.
+
+
+TXT_INPUT_TEXT = 'Введите текст: '
+TXT_RUSSIAN_LANGUAGE = 'русский'
+TXT_ENGLISN_LANGUAGE = 'английский'
+TXT_SENTENCES = 'Предложений: '
+TXT_SYLLABLES = 'Слогов: '
+TXT_WORDS = 'Слов: '
+TXT_AVERAGE_LENGTH_OF_SENTENCE = 'Средняя длина предложения (в словах): '
+TXT_AVERAGE_LENGTH_OF_WORD = 'Средняя длина слова (в слогах): '
+TXT_FLESCH_INDEX = 'Индекс удобочитаемости Флеша: '
+TXT_VERY_EASY_FOR_READING = 'Текст очень легко читается (для младших школьников).'
+TXT_EASY_FOR_READING = 'Простой текст (для школьников).'
+TXT_A_BIT_HARD_FOR_READING = 'Текст немного трудно читать (для студентов).'
+TXT_HARD_FOR_READING = 'Текст трудно читается (для выпускников ВУЗов).'
+TXT_POSITIVE = 'позитивный'
+TXT_NEUTRAL = 'нейтральный'
+TXT_NEGATIVE = 'негативный'
+TXT_POLARITY = 'Тональность текста: '
+TXT_SUBJECTIVITY = 'Cубъективность: '
+TXT_OBJECTIVITY = 'Oбъективность: '

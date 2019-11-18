@@ -1,0 +1,22 @@
+# Localization for English language.
+
+
+TXT_INPUT_TEXT = 'Input text: '
+TXT_RUSSIAN_LANGUAGE = 'russian'
+TXT_ENGLISN_LANGUAGE = 'english'
+TXT_SENTENCES = 'Sentences: '
+TXT_SYLLABLES = 'Syllables: '
+TXT_WORDS = 'Words: '
+TXT_AVERAGE_LENGTH_OF_SENTENCE = 'Average length of sentence (in words): '
+TXT_AVERAGE_LENGTH_OF_WORD = 'Average length of word (in syllables): '
+TXT_FLESCH_INDEX = 'Flesch index: '
+TXT_VERY_EASY_FOR_READING = 'The text is very easy to read (for younger students).'
+TXT_EASY_FOR_READING = 'Simple text (for schoolchildren).'
+TXT_A_BIT_HARD_FOR_READING = 'The text is a bit hard to read (for students).'
+TXT_HARD_FOR_READING = 'The text is hard to read (for university graduates).'
+TXT_POSITIVE = 'positive'
+TXT_NEUTRAL = 'neutral'
+TXT_NEGATIVE = 'negative'
+TXT_POLARITY = 'Polarity of the text: '
+TXT_SUBJECTIVITY = 'Subjectivity: '
+TXT_OBJECTIVITY = 'Objectivity: '
